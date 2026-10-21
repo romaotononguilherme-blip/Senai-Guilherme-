@@ -23,16 +23,19 @@ st.set_page_config(page_title="Previsão de Inadimplência", layout="wide")
 # Adicionando o titulo principal no topo da pagina do painel
 st.title("Análise de Inadimplência de Clientes")
 
-# Definindo o local fixo onde se encontra nossa planilha excel de clientes
-dados = pd.read_excel('inadimplencia-clientes.xlsx')
+# Definindo o caminho da planilha Excel
+dados = 'inadimplencia-clientes.xlsx'
 
-# Interrompendo o processo com erro caso a planilha necessaria nao exista
+# Verificando se a planilha existe antes de carregá-la
 if not os.path.exists(dados):
-    # Apresentando alerta visual vermelho para notificacao de arquivo ausente
-    st.error("Erro: A planilha 'inadimplencia-clientes.xlsx' não foi encontrada. O app não pode continuar.")
-    # Parando a execucao de forma segura
+    st.error(
+        "Erro: A planilha 'inadimplencia-clientes.xlsx' "
+        "não foi encontrada. O app não pode continuar."
+    )
     st.stop()
 
+# Carregando os dados da planilha Excel
+df = pd.read_excel(dados)
 # Configurando cache para evitar treinar o modelo de machine learning a cada interacao do usuario
 @st.cache_resource
 def inicializar_e_treinar():
