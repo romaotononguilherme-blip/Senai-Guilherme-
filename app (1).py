@@ -24,7 +24,7 @@ st.set_page_config(page_title="Previsão de Inadimplência", layout="wide")
 st.title("Análise de Inadimplência de Clientes")
 
 # Definindo o local fixo onde se encontra nossa planilha excel de clientes
-caminho_dados = "/content/inadimplencia-clientes.xlsx"
+dados = pd.read_excel('inadimplencia-clientes.xlsx')
 
 # Interrompendo o processo com erro caso a planilha necessaria nao exista
 if not os.path.exists(caminho_dados):
