@@ -27,7 +27,7 @@ st.title("Análise de Inadimplência de Clientes")
 dados = pd.read_excel('inadimplencia-clientes.xlsx')
 
 # Interrompendo o processo com erro caso a planilha necessaria nao exista
-if not os.path.exists(caminho_dados):
+if not os.path.exists(dados):
     # Apresentando alerta visual vermelho para notificacao de arquivo ausente
     st.error("Erro: A planilha 'inadimplencia-clientes.xlsx' não foi encontrada. O app não pode continuar.")
     # Parando a execucao de forma segura
